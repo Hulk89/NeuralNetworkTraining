@@ -21,3 +21,7 @@ def getData():
 def showData(X, y):
     plt.scatter(X[:, 0], X[:, 1], c=y, s=40, cmap=plt.cm.Spectral)
     plt.show()
+
+if __name__ == '__main__':
+    X, y, K = getData()
+    showData(X, y)
