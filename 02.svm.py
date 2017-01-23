@@ -16,12 +16,9 @@ b = np.zeros((1, K))
 for i in range(200):
     scores = np.dot(X, W) + b
     # forward pass
-    correctScore = scores[range(N), y] # (N, )
-    correctScoreMat = correctScore.T * np.ones( scores.T.shape )
-    correctScoreMat = correctScoreMat.T
-
-    marginMat = np.ones(scores.shape) * delta
-    L = np.maximum(scores - correctScoreMat + marginMat, 0)
+    correctScore = scores[range(N), y].reshape(N, 1)  # (N, )
+    correctScoreMat = np.ones(scores.shape) * correctScore  # broadcasting correctScore
+    L = np.maximum(scores - correctScoreMat + delta, 0)  # broadcasting delta
     L[range(N), y] = 0
 
     data_loss = np.sum(L)/N
