@@ -24,4 +24,4 @@ def showData(X, y):
 
 if __name__ == '__main__':
     X, y, K = getData()
-    showData(X, y)
+    #showData(X, y)
